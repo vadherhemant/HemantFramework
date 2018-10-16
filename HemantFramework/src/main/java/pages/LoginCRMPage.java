@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -11,12 +12,15 @@ import util.ProjProperties;
 
 public class LoginCRMPage extends BasePage{
 	
+	@CacheLookup
 	@FindBy (how = How.NAME, using="username")
 	WebElement userName;
 	
+	@CacheLookup
 	@FindBy(how = How.NAME, using="password")
 	WebElement passWord;
-	
+
+	@CacheLookup
 	@FindBy(how = How.XPATH, using="//input[@type='submit']")
 	WebElement submitButton;
 	
@@ -30,7 +34,7 @@ public class LoginCRMPage extends BasePage{
 		
 		ElementAction.SendKeys(passWord, ProjProperties.getConfigProperty("Password"));
 		
-		ElementAction.ClickOnButton(submitButton);
+		ElementAction.Click(submitButton);
 	}
 
 }
