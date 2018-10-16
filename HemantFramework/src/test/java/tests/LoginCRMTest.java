@@ -12,17 +12,13 @@ public class LoginCRMTest extends LoginCRMPage{
 
 	SoftAssert softAssert = new SoftAssert();
 	
-	LogoutCRMPage logoutPage = new LogoutCRMPage();	
-	
 	@BeforeTest
 	public void setupTest() {
-		System.out.println("TEST STARTED...");
+		//System.out.println("TEST STARTED...");
 	}
 	
 	@Test(priority=1)
 	public void LoginTest() {
-		
-		System.out.println("executing login test...");
 		
 		LoginCRM();
 
@@ -33,26 +29,28 @@ public class LoginCRMTest extends LoginCRMPage{
 	
 	@Test(priority=2)
 	public void verifyTitleTest() {
-		System.out.println("executing verify title test...");
+		//System.out.println("STARTING verifyTitleTest");
 		
-		System.out.println(driver.getTitle());
+		LogoutCRMPage logoutPage = new LogoutCRMPage();	
+		
+		//System.out.println(driver.getTitle());
 		
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
-				
+
 		logoutPage.LogoutCRM();
 
-		softAssert.assertEquals(driver.getTitle(), "asdf");
+		softAssert.assertEquals(driver.getTitle(), "#1 Free CRM software in the cloud for sales and service");
 		
 		softAssert.assertAll();
 
-		System.out.println("Logout success...");
+		//System.out.println("Logout success...");
 	}
 	
 	@AfterClass
 	public void tearDown() {
 		System.out.println("executing tear down after class");
-		//driver.quit();
-		//driver=null;
+		driver.quit();
+		driver=null;
 	}
 
 }
