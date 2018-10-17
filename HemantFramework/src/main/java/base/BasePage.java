@@ -28,7 +28,7 @@ public class BasePage {
 
 			if (browserName.equalsIgnoreCase("chrome")) {
 				System.setProperty(ProjProperties.getConfigProperty("ChromeKeyProperty"),
-						ProjProperties.getConfigProperty("ChromeDriverPath"));
+						ProjProperties.getConfigProperty("MacChromeDriverPath"));
 				driver = new ChromeDriver();
 			
 			} else if (browserName.equalsIgnoreCase("firefox")) {
