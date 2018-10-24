@@ -33,16 +33,16 @@ public class BasePage {
 			
 			} else if (browserName.equalsIgnoreCase("firefox")) {
 				System.setProperty(ProjProperties.getConfigProperty("FireFoxKeyProperty"),
-						ProjProperties.getConfigProperty("FireFoxDriverPath"));
+						ProjProperties.getConfigProperty("WinFireFoxDriverPath"));
 				driver = new FirefoxDriver();
 			
 			} else if (browserName.equalsIgnoreCase("IE")) {
 				System.setProperty(ProjProperties.getConfigProperty("IEDriverKeyProperty"),
-						ProjProperties.getConfigProperty("IEDriverPath"));
+						ProjProperties.getConfigProperty("WinIEDriverPath"));
 				driver = new InternetExplorerDriver();
 			} else if (browserName.equalsIgnoreCase("Edge")) {
 				System.setProperty(ProjProperties.getConfigProperty("EdgeKeyProperty"),
-						ProjProperties.getConfigProperty("EdgeDriverPath"));
+						ProjProperties.getConfigProperty("WinEdgeDriverPath"));
 				driver = new EdgeDriver();
 				
 				

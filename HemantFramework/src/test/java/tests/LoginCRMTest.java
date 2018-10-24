@@ -38,25 +38,21 @@ public class LoginCRMTest extends LoginCRMPage{
 		logger.log(Status.INFO, "starting login test");
 		
 		logger.log(Status.PASS, "status of test is PASS");
+
+		LoginCRM();
+
+		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
+		
+		softAssert.assertAll();
 		
 		extent.flush();
-		
-
-		//LoginCRM();
-
-		//softAssert.assertEquals(driver.getTitle(), "CRMPRO");
-		
-		//softAssert.assertAll();
 	}
 	
 	@Test(priority=2)
 	public void verifyTitleTest() {
-		//System.out.println("STARTING verifyTitleTest");
-		
+
 		LogoutCRMPage logoutPage = new LogoutCRMPage();	
-		
-		//System.out.println(driver.getTitle());
-		
+				
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
 
 		logoutPage.LogoutCRM();
@@ -64,8 +60,6 @@ public class LoginCRMTest extends LoginCRMPage{
 		softAssert.assertEquals(driver.getTitle(), "#1 Free CRM software in the cloud for sales and service");
 		
 		softAssert.assertAll();
-
-		//System.out.println("Logout success...");
 	}
 	
 	@AfterClass
