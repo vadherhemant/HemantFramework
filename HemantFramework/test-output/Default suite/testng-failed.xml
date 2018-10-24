@@ -8,7 +8,6 @@
           <include name="tearDown"/>
           <include name="setupTest"/>
           <include name="verifyTitleTest"/>
-          <include name="LoginTest"/>
         </methods>
       </class> <!-- tests.LoginCRMTest -->
     </classes>
