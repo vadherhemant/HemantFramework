@@ -17,7 +17,6 @@
 
 	<dependencies>
 
-
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -39,6 +38,7 @@
 			<artifactId>extentreports</artifactId>
 			<version>3.1.5</version>
 		</dependency>
+
 
 	</dependencies>
 </project>

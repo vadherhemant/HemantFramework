@@ -26,6 +26,7 @@ public class LoginCRMTest extends LoginCRMPage{
 	@Test(priority=1)
 	public void LoginTest() {
 		
+
 		ExtentHtmlReporter reporter = new ExtentHtmlReporter("ExtentReports/output1.html");
 		
 		ExtentReports extent = new ExtentReports();
@@ -40,12 +41,12 @@ public class LoginCRMTest extends LoginCRMPage{
 		
 		extent.flush();
 		
-		
-		LoginCRM();
 
-		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
+		//LoginCRM();
+
+		//softAssert.assertEquals(driver.getTitle(), "CRMPRO");
 		
-		softAssert.assertAll();
+		//softAssert.assertAll();
 	}
 	
 	@Test(priority=2)
