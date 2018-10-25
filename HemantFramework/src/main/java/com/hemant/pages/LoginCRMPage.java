@@ -1,4 +1,4 @@
-package pages;
+package com.hemant.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import base.BasePage;
-import base.ElementAction;
-import util.ProjProperties;
+import com.hemant.base.BasePage;
+import com.hemant.base.ElementAction;
+import com.hemant.generic.ProjProperties;
 
 public class LoginCRMPage extends BasePage{
 	

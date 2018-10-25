@@ -1,4 +1,4 @@
-package base;
+package com.hemant.base;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,8 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import util.ProjProperties;
-import util.WebEventListener;
+import com.hemant.generic.ProjProperties;
+import com.hemant.listeners.WebEventListener;
 
 public class BasePage {
 
@@ -28,7 +28,7 @@ public class BasePage {
 
 			if (browserName.equalsIgnoreCase("chrome")) {
 				System.setProperty(ProjProperties.getConfigProperty("ChromeKeyProperty"),
-						ProjProperties.getConfigProperty("MacChromeDriverPath"));
+						ProjProperties.getConfigProperty("WinChromeDriverPath"));
 				driver = new ChromeDriver();
 			
 			} else if (browserName.equalsIgnoreCase("firefox")) {

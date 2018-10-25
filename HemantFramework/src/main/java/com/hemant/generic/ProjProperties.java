@@ -1,4 +1,4 @@
-package util;
+package com.hemant.generic;
 
 import java.io.FileInputStream;
 import java.io.IOException;

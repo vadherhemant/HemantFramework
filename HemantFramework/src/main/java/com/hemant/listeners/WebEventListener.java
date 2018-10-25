@@ -1,11 +1,11 @@
-package util;
+package com.hemant.listeners;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
-import base.BasePage;
+import com.hemant.base.BasePage;
 
 public class WebEventListener extends BasePage implements WebDriverEventListener {
 

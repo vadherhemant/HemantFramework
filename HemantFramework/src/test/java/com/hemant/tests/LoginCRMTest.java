@@ -1,18 +1,16 @@
-package tests;
+package com.hemant.tests;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.aventstack.extentreports.ExtentReporter;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-
-import pages.LoginCRMPage;
-import pages.LogoutCRMPage;
+import com.hemant.pages.LoginCRMPage;
+import com.hemant.pages.LogoutCRMPage;
 
 public class LoginCRMTest extends LoginCRMPage{
 

@@ -2,28 +2,28 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="10735" started-at="2018-10-24T15:47:09Z" finished-at="2018-10-24T15:47:20Z">
+  <suite name="Default suite" duration-ms="11086" started-at="2018-10-25T15:45:36Z" finished-at="2018-10-25T15:45:47Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="10735" started-at="2018-10-24T15:47:09Z" finished-at="2018-10-24T15:47:20Z">
-      <class name="tests.LoginCRMTest">
-        <test-method status="PASS" signature="setupTest()[pri:0, instance:tests.LoginCRMTest@b9b00e0]" name="setupTest" is-config="true" duration-ms="15" started-at="2018-10-24T15:47:09Z" finished-at="2018-10-24T15:47:09Z">
+    <test name="Default test" duration-ms="11086" started-at="2018-10-25T15:45:36Z" finished-at="2018-10-25T15:45:47Z">
+      <class name="com.hemant.tests.LoginCRMTest">
+        <test-method status="PASS" signature="setupTest()[pri:0, instance:com.hemant.tests.LoginCRMTest@29215f06]" name="setupTest" is-config="true" duration-ms="19" started-at="2018-10-25T15:45:36Z" finished-at="2018-10-25T15:45:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupTest -->
-        <test-method status="PASS" signature="LoginTest()[pri:1, instance:tests.LoginCRMTest@b9b00e0]" name="LoginTest" duration-ms="8906" started-at="2018-10-24T15:47:09Z" finished-at="2018-10-24T15:47:18Z">
+        <test-method status="PASS" signature="LoginTest()[pri:1, instance:com.hemant.tests.LoginCRMTest@29215f06]" name="LoginTest" duration-ms="8901" started-at="2018-10-25T15:45:36Z" finished-at="2018-10-25T15:45:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LoginTest -->
-        <test-method status="PASS" signature="verifyTitleTest()[pri:2, instance:tests.LoginCRMTest@b9b00e0]" name="verifyTitleTest" duration-ms="1642" started-at="2018-10-24T15:47:18Z" finished-at="2018-10-24T15:47:20Z">
+        <test-method status="PASS" signature="verifyTitleTest()[pri:2, instance:com.hemant.tests.LoginCRMTest@29215f06]" name="verifyTitleTest" duration-ms="1369" started-at="2018-10-25T15:45:45Z" finished-at="2018-10-25T15:45:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyTitleTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:tests.LoginCRMTest@b9b00e0]" name="tearDown" is-config="true" duration-ms="135" started-at="2018-10-24T15:47:20Z" finished-at="2018-10-24T15:47:20Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.hemant.tests.LoginCRMTest@29215f06]" name="tearDown" is-config="true" duration-ms="690" started-at="2018-10-25T15:45:46Z" finished-at="2018-10-25T15:45:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- tests.LoginCRMTest -->
+      </class> <!-- com.hemant.tests.LoginCRMTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
