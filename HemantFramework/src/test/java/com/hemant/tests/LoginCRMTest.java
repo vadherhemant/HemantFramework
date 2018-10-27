@@ -5,12 +5,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.hemant.extentreports.ExtentTestManager;
 import com.hemant.pages.LoginCRMPage;
 import com.hemant.pages.LogoutCRMPage;
+
 
 public class LoginCRMTest extends LoginCRMPage{
 
@@ -19,50 +17,44 @@ public class LoginCRMTest extends LoginCRMPage{
 	@BeforeTest
 	public void setupTest() {
 		//System.out.println("TEST STARTED...");
+		//ExtentTestManager.startTest("setupTest", "start the setup of the test");
+		
+		//ExtentTestManager.getTest().setDescription("Inside verify Title Test FROM EXTENT");
 	}
 	
 	@Test(priority=1)
 	public void LoginTest() {
 		
-
-		ExtentHtmlReporter reporter = new ExtentHtmlReporter("ExtentReports/output1.html");
-		
-		ExtentReports extent = new ExtentReports();
-		
-		extent.attachReporter(reporter);
-		
-		ExtentTest logger = extent.createTest("LoginTest");
-		
-		logger.log(Status.INFO, "starting login test");
-		
-		logger.log(Status.PASS, "status of test is PASS");
+		ExtentTestManager.getTest().setDescription("Inside Login Test message from Extent Test Manager.getTest");
 
 		LoginCRM();
 
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
 		
 		softAssert.assertAll();
-		
-		extent.flush();
+
 	}
 	
 	@Test(priority=2)
 	public void verifyTitleTest() {
+		
+		//ExtentTestManager.getTest().setDescription("Inside verify Title Test FROM EXTENT");
 
 		LogoutCRMPage logoutPage = new LogoutCRMPage();	
-				
+
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
 
 		logoutPage.LogoutCRM();
 
 		softAssert.assertEquals(driver.getTitle(), "#1 Free CRM software in the cloud for sales and service");
-		
+
 		softAssert.assertAll();
 	}
 	
 	@AfterClass
 	public void tearDown() {
-		System.out.println("executing tear down after class");
+		//ExtentTestManager.endTest();
+		//System.out.println("executing tear down after class");
 		driver.quit();
 		driver=null;
 	}

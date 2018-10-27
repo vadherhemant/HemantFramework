@@ -11,7 +11,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.hemant.generic.ProjProperties;
-import com.hemant.listeners.WebEventListener;
+
 
 public class BasePage {
 
@@ -43,21 +43,20 @@ public class BasePage {
 			} else if (browserName.equalsIgnoreCase("Edge")) {
 				System.setProperty(ProjProperties.getConfigProperty("EdgeKeyProperty"),
 						ProjProperties.getConfigProperty("WinEdgeDriverPath"));
-				driver = new EdgeDriver();
-				
-				
+				driver = new EdgeDriver();				
 				
 			} else if (browserName.equalsIgnoreCase(null)) {
 				System.out.println("Browser Name cannot be Null.");
 				driver = null;
 			}
 
-			e_driver = new EventFiringWebDriver(driver);
+/*			e_driver = new EventFiringWebDriver(driver);
 			WebEventListener eventListener = new WebEventListener();
+			
 			e_driver.register(eventListener);
 			
 			driver = e_driver;
-			
+*/			
 			driver.manage().window().maximize();
 
 			driver.manage().deleteAllCookies();
@@ -66,16 +65,9 @@ public class BasePage {
 
 			driver.manage().timeouts().pageLoadTimeout(pageWait, TimeUnit.SECONDS);
 
-			((JavascriptExecutor)driver).executeScript("document.body.style.zoom='150%';");	
+			((JavascriptExecutor)driver).executeScript("document.body.style.zoom='100%';");	
 			
 			driver.get(webURL);
-			
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 }
