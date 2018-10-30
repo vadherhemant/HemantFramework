@@ -22,7 +22,7 @@ public class LoginCRMTest extends LoginCRMPage {
 		LoginCRM();
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
 		softAssert.assertAll();
-	}
+	} 
 
 	@Test(priority = 2)
 	public void verifyTitleTest() {
