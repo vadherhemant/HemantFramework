@@ -20,8 +20,9 @@ public class TestListener extends BasePage implements ITestListener{
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        System.out.println("I am in onStart method " + iTestContext.getName());
+        System.out.println(iTestContext.getStartDate() + " I am in onStart method " + iTestContext.getName());
         iTestContext.setAttribute("WebDriver", driver);
+        
     }
 
     @Override
@@ -48,7 +49,7 @@ public class TestListener extends BasePage implements ITestListener{
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.println("I am in onTestFailure method " +  getTestMethodName(iTestResult) + " failed");
+        System.out.println("I am in onTestFailure method " +  getTestMethodName(iTestResult) + " failed." + iTestResult.getThrowable());
 
         //Get driver from BaseTest and assign to local webdriver variable.
         //Object testClass = iTestResult.getInstance();
@@ -59,7 +60,7 @@ public class TestListener extends BasePage implements ITestListener{
                 getScreenshotAs(OutputType.BASE64);
 
         //Extentreports log and screenshot operations for failed tests.
-        ExtentTestManager.getTest().log(LogStatus.FAIL,"Test Failed",
+        ExtentTestManager.getTest().log(LogStatus.FAIL,"Test Failed. " + iTestResult.getThrowable(),
                 ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
     }
 

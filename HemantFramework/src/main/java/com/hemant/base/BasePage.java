@@ -11,11 +11,13 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.hemant.generic.ProjProperties;
+import com.hemant.generic.WebEventListener;
 
 
 public class BasePage {
 
 	public static WebDriver driver;
+	WebEventListener eventListener;
 	public static EventFiringWebDriver e_driver;
 
 	public BasePage() {
@@ -50,13 +52,13 @@ public class BasePage {
 				driver = null;
 			}
 
-/*			e_driver = new EventFiringWebDriver(driver);
-			WebEventListener eventListener = new WebEventListener();
+			e_driver = new EventFiringWebDriver(driver);
+			eventListener = new WebEventListener();
 			
 			e_driver.register(eventListener);
 			
 			driver = e_driver;
-*/			
+			
 			driver.manage().window().maximize();
 
 			driver.manage().deleteAllCookies();

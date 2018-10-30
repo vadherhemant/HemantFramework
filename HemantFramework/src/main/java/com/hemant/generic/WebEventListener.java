@@ -1,4 +1,4 @@
-package com.hemant.listeners;
+package com.hemant.generic;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
