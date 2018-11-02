@@ -37,6 +37,7 @@ public class LoginCRMTest extends LoginCRMPage {
 
 		softAssert.assertAll();
 	}
+	
 
 	@AfterClass
 	public void tearDown() {
