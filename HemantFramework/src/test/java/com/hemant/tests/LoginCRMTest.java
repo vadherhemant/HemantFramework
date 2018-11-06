@@ -17,14 +17,14 @@ public class LoginCRMTest extends LoginCRMPage {
 		// System.out.println("TEST STARTED...");
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, description = "This test will assert page title after logging into site")
 	public void LoginTest() {
 		LoginCRM();
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
 		softAssert.assertAll();
 	} 
 
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true, description = "This test will assert login success and logout success using page title verification")
 	public void verifyTitleTest() {
 
 		LogoutCRMPage logoutPage = new LogoutCRMPage();

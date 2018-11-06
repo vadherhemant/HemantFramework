@@ -1,5 +1,8 @@
 package com.hemant.base;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -13,15 +16,20 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import com.hemant.generic.ProjProperties;
 import com.hemant.generic.WebEventListener;
 
-
 public class BasePage {
 
 	public static WebDriver driver;
 	WebEventListener eventListener;
 	public static EventFiringWebDriver e_driver;
+	//public static String currentTime;
+	DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSS");
+	Date date;
+	
 
 	public BasePage() {
 
+		//currentTime = LoggerDateUtil.getDateTime();
+		
 		if (driver == null) {
 			String browserName = ProjProperties.getConfigProperty("Browser");
 			String webURL = ProjProperties.getConfigProperty("URL");
@@ -71,5 +79,15 @@ public class BasePage {
 			
 			driver.get(webURL);
 		}
+	}
+	
+
+
+	public String currentDtTime() {
+		//dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSS");
+
+		date = new Date();
+
+		return dateFormat.format(date);
 	}
 }

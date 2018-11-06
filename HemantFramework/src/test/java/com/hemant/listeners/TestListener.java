@@ -3,6 +3,7 @@ package com.hemant.listeners;
 import com.hemant.base.BasePage;
 import com.hemant.extentreports.ExtentManager;
 import com.hemant.extentreports.ExtentTestManager;
+import com.hemant.util.DateUtil;
 import com.relevantcodes.extentreports.LogStatus;
 
 import org.openqa.selenium.OutputType;
@@ -20,14 +21,14 @@ public class TestListener extends BasePage implements ITestListener{
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        System.out.println(iTestContext.getStartDate() + " I am in onStart method " + iTestContext.getName());
+        System.out.println(DateUtil.getDateTime() + " >>>  I am in onStart method " + iTestContext.getName());
         iTestContext.setAttribute("WebDriver", driver);
-        
+        //iTestContext.getStartDate()
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        System.out.println("I am in onFinish method " + iTestContext.getName());
+        System.out.println(DateUtil.getDateTime() + " >>>  I am in onFinish method " + iTestContext.getName());
         //Do tier down operations for extentreports reporting!
         ExtentTestManager.endTest();
         ExtentManager.getReporter().flush();
@@ -35,21 +36,21 @@ public class TestListener extends BasePage implements ITestListener{
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        System.out.println("I am in onTestStart method " +  getTestMethodName(iTestResult) + " start");
+        System.out.println(DateUtil.getDateTime() + " >>>  I am in onTestStart method " +  getTestMethodName(iTestResult) + " start");
         //Start operation for extentreports.
         ExtentTestManager.startTest(iTestResult.getMethod().getMethodName(),"");
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        System.out.println("I am in onTestSuccess method " +  getTestMethodName(iTestResult) + " succeed");
+        System.out.println(DateUtil.getDateTime() + " >>>  I am in onTestSuccess method " +  getTestMethodName(iTestResult) + " succeed");
         //Extentreports log operation for passed tests.
         ExtentTestManager.getTest().log(LogStatus.PASS, "Test passed");
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        System.out.println("I am in onTestFailure method " +  getTestMethodName(iTestResult) + " failed." + iTestResult.getThrowable());
+        System.out.println(DateUtil.getDateTime() + " >>>  I am in onTestFailure method " +  getTestMethodName(iTestResult) + " failed." + iTestResult.getThrowable());
 
         //Get driver from BaseTest and assign to local webdriver variable.
         //Object testClass = iTestResult.getInstance();
@@ -60,20 +61,20 @@ public class TestListener extends BasePage implements ITestListener{
                 getScreenshotAs(OutputType.BASE64);
 
         //Extentreports log and screenshot operations for failed tests.
-        ExtentTestManager.getTest().log(LogStatus.FAIL,"Test Failed. " + iTestResult.getThrowable(),
+        ExtentTestManager.getTest().log(LogStatus.FAIL, DateUtil.getDateTime() + "   Test Failed. " + iTestResult.getThrowable(),
                 ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        System.out.println("I am in onTestSkipped method "+  getTestMethodName(iTestResult) + " skipped");
+        System.out.println(DateUtil.getDateTime() + " >>>  I am in onTestSkipped method "+  getTestMethodName(iTestResult) + " skipped");
         //Extentreports log operation for skipped tests.
-        ExtentTestManager.getTest().log(LogStatus.SKIP, "Test Skipped");
+        ExtentTestManager.getTest().log(LogStatus.SKIP, DateUtil.getDateTime()  + "   Test Skipped");
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-        System.out.println("Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
+        System.out.println(DateUtil.getDateTime() + " >>>  Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
     }
 
 }

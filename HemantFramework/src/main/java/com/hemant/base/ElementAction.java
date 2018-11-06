@@ -7,13 +7,20 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.hemant.util.DateUtil;
+import com.hemant.util.ElementHighlighter;
+
 public class ElementAction extends BasePage {
 
 	static WebDriverWait wait = new WebDriverWait(driver, 30);
 	static JavascriptExecutor js = (JavascriptExecutor) driver;
 	static Actions actions = new Actions(driver);
 
+	
 	public static void Click(WebElement element) {
+		
+		ElementHighlighter.highlightElement(driver, element);
+		
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 			element.click();
@@ -39,7 +46,7 @@ public class ElementAction extends BasePage {
 									try {
 										actions.clickAndHold(element).release().perform();
 									} catch (Exception e7) {
-										System.out.println("UNABLE TO PERFORM CLICK ON ELEMENT:-> " + element);
+										System.out.println(DateUtil.getDateTime() + " >>> UNABLE TO PERFORM CLICK ON ELEMENT:-> " + element);
 									}
 								}
 							}
@@ -48,17 +55,20 @@ public class ElementAction extends BasePage {
 				}
 			}
 		} /*finally {
-			System.out.println("CLICKED ON LINK:-> " + element);
+			System.out.println(DateUtil.getDateTime() + " >>> CLICKED ON LINK:-> " + element);
 		}*/
 	}
 
 	public static void SendKeys(WebElement element, String text) {
+		
+		ElementHighlighter.highlightElement(driver, element);
+		
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 			element.clear();
 			element.sendKeys(text);
 		} catch (Exception e) {
-			System.out.println("CANNOT ENTER TEXT ON ELEMENT:-> " + element);
+			System.out.println(DateUtil.getDateTime() + " >>> CANNOT ENTER TEXT ON ELEMENT:-> " + element);
 		}
 	}
 }
