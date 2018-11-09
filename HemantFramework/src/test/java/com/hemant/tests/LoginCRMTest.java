@@ -14,7 +14,7 @@ public class LoginCRMTest extends LoginCRMPage {
 
 	@BeforeTest
 	public void setupTest() {
-		// System.out.println("TEST STARTED...");
+		// logConsoleMessage("TEST STARTED...");
 	}
 
 	@Test(priority = 1, description = "This test will assert page title after logging into site")

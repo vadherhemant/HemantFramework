@@ -8,18 +8,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.hemant.util.DateUtil;
-import com.hemant.util.ElementHighlighter;
 
 public class ElementAction extends BasePage {
 
 	static WebDriverWait wait = new WebDriverWait(driver, 30);
 	static JavascriptExecutor js = (JavascriptExecutor) driver;
 	static Actions actions = new Actions(driver);
-
 	
 	public static void Click(WebElement element) {
-		
-		ElementHighlighter.highlightElement(driver, element);
 		
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -46,7 +42,7 @@ public class ElementAction extends BasePage {
 									try {
 										actions.clickAndHold(element).release().perform();
 									} catch (Exception e7) {
-										System.out.println(DateUtil.getDateTime() + " >>> UNABLE TO PERFORM CLICK ON ELEMENT:-> " + element);
+										logConsoleMessage(DateUtil.getDateTime() + " >>> UNABLE TO PERFORM CLICK ON ELEMENT:-> " + element);
 									}
 								}
 							}
@@ -55,20 +51,32 @@ public class ElementAction extends BasePage {
 				}
 			}
 		} /*finally {
-			System.out.println(DateUtil.getDateTime() + " >>> CLICKED ON LINK:-> " + element);
+			logConsoleMessage(DateUtil.getDateTime() + " >>> CLICKED ON LINK:-> " + element);
 		}*/
 	}
 
 	public static void SendKeys(WebElement element, String text) {
 		
-		ElementHighlighter.highlightElement(driver, element);
-		
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
+			element.click();
 			element.clear();
-			element.sendKeys(text);
+			
+			//element.sendKeys(text);
+			int i;
+			char c;
+			String s;
+			
+			for (i=0; i< text.length(); i++) {
+				c=text.charAt(i);
+				s = new StringBuilder().append(c).toString();
+				element.sendKeys(s);
+				Thread.sleep(30);
+			}
+			
 		} catch (Exception e) {
-			System.out.println(DateUtil.getDateTime() + " >>> CANNOT ENTER TEXT ON ELEMENT:-> " + element);
+			logConsoleMessage(DateUtil.getDateTime() + " >>> CANNOT ENTER TEXT ON ELEMENT:-> " + element);
 		}
 	}
+	
 }

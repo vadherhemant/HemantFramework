@@ -23,9 +23,9 @@ public class LogoutCRMPage extends BasePage {
 		
 		try {
 			driver.switchTo().frame("mainpanel");
-			//System.out.println("about to click on logout");
+			//logConsoleMessage("about to click on logout");
 			ElementAction.Click(logoutLink);
-			//System.out.println("clicked on Logout");
+			//logConsoleMessage("clicked on Logout");
 		} finally {
 			driver.switchTo().parentFrame();
 		}

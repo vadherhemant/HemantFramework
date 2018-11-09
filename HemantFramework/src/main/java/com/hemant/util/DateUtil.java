@@ -18,7 +18,7 @@ public class DateUtil {
 		 return str;
 		 //SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 		   // Date date = new Date();  
-		    //System.out.println(formatter.format(date));  
+		    //logConsoleMessage(formatter.format(date));  
 	}
 	
 	/*public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class DateUtil {
 		
 		String mystr = du.getDateTime();
 		
-		System.out.println(mystr);
+		logConsoleMessage(mystr);
 		
 	}*/
 }

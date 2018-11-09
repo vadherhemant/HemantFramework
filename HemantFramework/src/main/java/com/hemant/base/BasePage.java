@@ -15,8 +15,9 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.hemant.generic.ProjProperties;
 import com.hemant.generic.WebEventListener;
+import com.hemant.util.GenericUtilities;
 
-public class BasePage {
+public class BasePage extends GenericUtilities {
 
 	public static WebDriver driver;
 
@@ -30,29 +31,44 @@ public class BasePage {
 			}
 
 		} catch (UnsupportedOperationException e1) {
-			System.out.println("No valid browser name match found to start...");
+			logConsoleMessage("No valid browser name match found to start...");
 			e1.getMessage();
-			
+
 		} catch (Exception e) {
-			System.out.println("Error occurred while starting the browser driver ...");
+			logConsoleMessage("Error occurred while starting the browser driver ...");
 			e.printStackTrace();
-		} 
+		}
 	}
 
 	public void stopBrowser() {
 
 		try {
 			if (driver != null) {
-				System.out.println("Stopping Driver...");
+				logConsoleMessage("Stopping Driver...");
 				driver.quit();
 				driver = null;
 			}
 		} catch (Exception e) {
-			System.out.println("Error occurred while stopping the browser driver...");
+			logConsoleMessage("Error occurred while stopping the browser driver...");
 			e.printStackTrace();
 		}
 
 	}
+	
+/*	public String currentDtTime() {
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSS");
+
+		Date date = new Date();
+
+		return dateFormat.format(date);
+	}*/
+	
+	
+/*	public static void logConsoleMessage(String message) {
+		System.out.println(message);
+	}*/
+	
 
 	private void startBrowser() {
 
@@ -68,9 +84,11 @@ public class BasePage {
 
 	}
 
+	
 	private void setDriverToBrowser() {
 		String browserName = ProjProperties.getConfigProperty("Browser");
-
+		logConsoleMessage("Starting browser " + browserName + "...");
+		
 		if (browserName.equalsIgnoreCase("chrome")) {
 			System.setProperty(ProjProperties.getConfigProperty("ChromeKeyProperty"),
 					ProjProperties.getConfigProperty("WinChromeDriverPath"));
@@ -92,30 +110,34 @@ public class BasePage {
 			driver = new EdgeDriver();
 
 		} else if (browserName.equalsIgnoreCase(null)) {
-			System.out.println("Browser Name cannot be Null.");
+			logConsoleMessage("Browser Name cannot be Null.");
 			driver = null;
 			throw new UnsupportedOperationException("Driver is Null, cannot test further");
 		}
 	}
 
+	
 	private void loadWebsite() {
 
 		String webURL = ProjProperties.getConfigProperty("URL");
 
 		try {
-			System.out.println("Loading the Website...");
+			logConsoleMessage("Loading the Website...");
 			driver.get(webURL);
+
 		} catch (Exception e) {
-			System.out.println("Error occurred while loading the website: "+ webURL);
+			logConsoleMessage("Error occurred while loading the website: " + webURL);
 			e.printStackTrace();
 		}
 
 	}
 
+	
 	private void setBrowserZoom(int zoom) {
 		((JavascriptExecutor) driver).executeScript("document.body.style.zoom='" + zoom + "%';");
 	}
 
+	
 	private void setManageDriver() {
 		long implicitWait = Long.parseLong(ProjProperties.getConfigProperty("ImplicitWait"));
 		long pageWait = Long.parseLong(ProjProperties.getConfigProperty("PageWaitTime"));
@@ -132,6 +154,7 @@ public class BasePage {
 		driver.manage().timeouts().setScriptTimeout(scriptWait, TimeUnit.SECONDS);
 	}
 
+	
 	private void setEventListener() {
 
 		EventFiringWebDriver e_driver = new EventFiringWebDriver(driver);
@@ -143,13 +166,6 @@ public class BasePage {
 		driver = e_driver;
 	}
 
-	public String currentDtTime() {
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSS");
-
-		Date date = new Date();
-
-		return dateFormat.format(date);
-	}
 
 }
