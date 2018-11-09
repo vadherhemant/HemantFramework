@@ -19,75 +19,137 @@ import com.hemant.generic.WebEventListener;
 public class BasePage {
 
 	public static WebDriver driver;
-	WebEventListener eventListener;
-	public static EventFiringWebDriver e_driver;
-	//public static String currentTime;
-	DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSS");
-	Date date;
-	
 
 	public BasePage() {
 
-		//currentTime = LoggerDateUtil.getDateTime();
-		
-		if (driver == null) {
-			String browserName = ProjProperties.getConfigProperty("Browser");
-			String webURL = ProjProperties.getConfigProperty("URL");
-			long implicitWait = Long.parseLong(ProjProperties.getConfigProperty("ImplicitWait"));
-			long pageWait = Long.parseLong(ProjProperties.getConfigProperty("PageWaitTime"));
+		try {
 
-			if (browserName.equalsIgnoreCase("chrome")) {
-				System.setProperty(ProjProperties.getConfigProperty("ChromeKeyProperty"),
-						ProjProperties.getConfigProperty("WinChromeDriverPath"));
-				driver = new ChromeDriver();
-			
-			} else if (browserName.equalsIgnoreCase("firefox")) {
-				System.setProperty(ProjProperties.getConfigProperty("FireFoxKeyProperty"),
-						ProjProperties.getConfigProperty("WinFireFoxDriverPath"));
-				driver = new FirefoxDriver();
-			
-			} else if (browserName.equalsIgnoreCase("IE")) {
-				System.setProperty(ProjProperties.getConfigProperty("IEDriverKeyProperty"),
-						ProjProperties.getConfigProperty("WinIEDriverPath"));
-				driver = new InternetExplorerDriver();
-			} else if (browserName.equalsIgnoreCase("Edge")) {
-				System.setProperty(ProjProperties.getConfigProperty("EdgeKeyProperty"),
-						ProjProperties.getConfigProperty("WinEdgeDriverPath"));
-				driver = new EdgeDriver();				
-				
-			} else if (browserName.equalsIgnoreCase(null)) {
-				System.out.println("Browser Name cannot be Null.");
-				driver = null;
+			if (driver == null) {
+
+				startBrowser();
 			}
 
-			e_driver = new EventFiringWebDriver(driver);
-			eventListener = new WebEventListener();
+		} catch (UnsupportedOperationException e1) {
+			System.out.println("No valid browser name match found to start...");
+			e1.getMessage();
 			
-			e_driver.register(eventListener);
-			
-			driver = e_driver;
-			
-			driver.manage().window().maximize();
+		} catch (Exception e) {
+			System.out.println("Error occurred while starting the browser driver ...");
+			e.printStackTrace();
+		} 
+	}
 
-			driver.manage().deleteAllCookies();
+	public void stopBrowser() {
 
-			driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
+		try {
+			if (driver != null) {
+				System.out.println("Stopping Driver...");
+				driver.quit();
+				driver = null;
+			}
+		} catch (Exception e) {
+			System.out.println("Error occurred while stopping the browser driver...");
+			e.printStackTrace();
+		}
 
-			driver.manage().timeouts().pageLoadTimeout(pageWait, TimeUnit.SECONDS);
+	}
 
-			((JavascriptExecutor)driver).executeScript("document.body.style.zoom='100%';");	
-			
-			driver.get(webURL);
+	private void startBrowser() {
+
+		setDriverToBrowser();
+
+		setEventListener();
+
+		setManageDriver();
+
+		setBrowserZoom(100);
+
+		loadWebsite();
+
+	}
+
+	private void setDriverToBrowser() {
+		String browserName = ProjProperties.getConfigProperty("Browser");
+
+		if (browserName.equalsIgnoreCase("chrome")) {
+			System.setProperty(ProjProperties.getConfigProperty("ChromeKeyProperty"),
+					ProjProperties.getConfigProperty("WinChromeDriverPath"));
+			driver = new ChromeDriver();
+
+		} else if (browserName.equalsIgnoreCase("firefox")) {
+			System.setProperty(ProjProperties.getConfigProperty("FireFoxKeyProperty"),
+					ProjProperties.getConfigProperty("WinFireFoxDriverPath"));
+			driver = new FirefoxDriver();
+
+		} else if (browserName.equalsIgnoreCase("IE")) {
+			System.setProperty(ProjProperties.getConfigProperty("IEDriverKeyProperty"),
+					ProjProperties.getConfigProperty("WinIEDriverPath"));
+			driver = new InternetExplorerDriver();
+
+		} else if (browserName.equalsIgnoreCase("Edge")) {
+			System.setProperty(ProjProperties.getConfigProperty("EdgeKeyProperty"),
+					ProjProperties.getConfigProperty("WinEdgeDriverPath"));
+			driver = new EdgeDriver();
+
+		} else if (browserName.equalsIgnoreCase(null)) {
+			System.out.println("Browser Name cannot be Null.");
+			driver = null;
+			throw new UnsupportedOperationException("Driver is Null, cannot test further");
 		}
 	}
-	
 
+	private void loadWebsite() {
+
+		String webURL = ProjProperties.getConfigProperty("URL");
+
+		try {
+			System.out.println("Loading the Website...");
+			driver.get(webURL);
+		} catch (Exception e) {
+			System.out.println("Error occurred while loading the website: "+ webURL);
+			e.printStackTrace();
+		}
+
+	}
+
+	private void setBrowserZoom(int zoom) {
+		((JavascriptExecutor) driver).executeScript("document.body.style.zoom='" + zoom + "%';");
+	}
+
+	private void setManageDriver() {
+		long implicitWait = Long.parseLong(ProjProperties.getConfigProperty("ImplicitWait"));
+		long pageWait = Long.parseLong(ProjProperties.getConfigProperty("PageWaitTime"));
+		long scriptWait = Long.parseLong(ProjProperties.getConfigProperty("ScriptWaitTime"));
+
+		driver.manage().window().maximize();
+
+		driver.manage().deleteAllCookies();
+
+		driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
+
+		driver.manage().timeouts().pageLoadTimeout(pageWait, TimeUnit.SECONDS);
+
+		driver.manage().timeouts().setScriptTimeout(scriptWait, TimeUnit.SECONDS);
+	}
+
+	private void setEventListener() {
+
+		EventFiringWebDriver e_driver = new EventFiringWebDriver(driver);
+
+		WebEventListener eventListener = new WebEventListener();
+
+		e_driver.register(eventListener);
+
+		driver = e_driver;
+	}
 
 	public String currentDtTime() {
-		//dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSS");
 
-		date = new Date();
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSS");
+
+		Date date = new Date();
 
 		return dateFormat.format(date);
 	}
+
 }
