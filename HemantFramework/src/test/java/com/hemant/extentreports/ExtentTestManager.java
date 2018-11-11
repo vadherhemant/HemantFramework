@@ -8,7 +8,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 
 public class ExtentTestManager {
 
-	static Map extentTestMap = new HashMap();
+	static Map<Integer, ExtentTest> extentTestMap = new HashMap<Integer, ExtentTest>();
 	
 	static ExtentReports extent = ExtentManager.getReporter();
 	

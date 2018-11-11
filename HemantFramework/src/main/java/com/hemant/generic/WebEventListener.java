@@ -5,120 +5,115 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
-import com.hemant.base.BasePage;
-import com.hemant.util.DateUtil;
 import com.hemant.util.ElementHighlighter;
+import com.hemant.util.GenericUtil;
 
-public class WebEventListener extends BasePage implements WebDriverEventListener {
-
+public class WebEventListener implements WebDriverEventListener {
+	
 	public void beforeAlertAccept(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + beforeAlertAccept");
+		GenericUtil.logConsoleMessage("WebEventListener + beforeAlertAccept");
 	}
 
 	public void afterAlertAccept(WebDriver driver) {
-		
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + afterAlertAccept");
+		GenericUtil.logConsoleMessage("WebEventListener + afterAlertAccept");
 	}
 
 	public void afterAlertDismiss(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + afterAlertDismiss");
+		GenericUtil.logConsoleMessage("WebEventListener + afterAlertDismiss");
 	}
 
 	public void beforeAlertDismiss(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + beforeAlertDismiss");
+		GenericUtil.logConsoleMessage("WebEventListener + beforeAlertDismiss");
 	}
 
 	public void beforeNavigateRefresh(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + beforeNavigateRefresh");
+		GenericUtil.logConsoleMessage("WebEventListener + beforeNavigateRefresh");
 	}
 
 	public void afterNavigateRefresh(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + afterNavigateRefresh");
+		GenericUtil.logConsoleMessage("WebEventListener + afterNavigateRefresh");
 	}
 
 	public void beforeChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
-		//ElementHighlighter.highlightElement(driver, element);
-		//logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + beforeChangeValueOf");
+		//GenericUtil.logConsoleMessage("WebEventListener + beforeChangeValueOf");
 	}
 
 	public void afterChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
-		//logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + afterChangeValueOf");
+		//GenericUtil.logConsoleMessage("WebEventListener + afterChangeValueOf");
 	}
 
 	public void beforeScript(String script, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + beforeScript");
+		GenericUtil.logConsoleMessage("WebEventListener + beforeScript");
 	}
 
 	public void afterScript(String script, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + afterScript");
+		GenericUtil.logConsoleMessage("WebEventListener + afterScript");
 	}
 
 	public void beforeSwitchToWindow(String windowName, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + beforeSwitchToWindow");
+		GenericUtil.logConsoleMessage("WebEventListener + beforeSwitchToWindow");
 	}
 
 	public void afterSwitchToWindow(String windowName, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> WebEventListener + afterSwitchToWindow");
+		GenericUtil.logConsoleMessage("WebEventListener + afterSwitchToWindow");
 	}
 
 	public void beforeNavigateTo(String url, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Before navigating to: '" + url + "'");
+		GenericUtil.logConsoleMessage("Before navigating to: '" + url + "'");
 	}
 
 	public void afterNavigateTo(String url, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Navigated to:'" + url + "'");
+		GenericUtil.logConsoleMessage("Navigated to:'" + url + "'");
 	}
 
 	public void beforeChangeValueOf(WebElement element, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Value of the:" + element.toString() + " before any changes made");
+		GenericUtil.logConsoleMessage("Value of the:" + element.toString() + " before any changes made");
 	}
 
 	public void afterChangeValueOf(WebElement element, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Element value changed to: " + element.toString());
+		GenericUtil.logConsoleMessage("Element value changed to: " + element.toString());
 	}
 
 	public void beforeClickOn(WebElement element, WebDriver driver) {
+		GenericUtil.logConsoleMessage("Trying to click on: " + element.toString());
 		//ElementHighlighter.highlightElement(driver, element);
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Trying to click on: " + element.toString());
 	}
 
 	public void afterClickOn(WebElement element, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Clicked on: " + element.toString());
+		GenericUtil.logConsoleMessage("Clicked on: " + element.toString());
 	}
 
 	public void beforeNavigateBack(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Navigating back to previous page");
+		GenericUtil.logConsoleMessage("Navigating back to previous page");
 	}
 
 	public void afterNavigateBack(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Navigated back to previous page");
+		GenericUtil.logConsoleMessage("Navigated back to previous page");
 	}
 
 	public void beforeNavigateForward(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Navigating forward to next page");
+		GenericUtil.logConsoleMessage("Navigating forward to next page");
 	}
 
 	public void afterNavigateForward(WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Navigated forward to next page");
+		GenericUtil.logConsoleMessage("Navigated forward to next page");
 	}
 
 	public void onException(Throwable error, WebDriver driver) {
-		logConsoleMessage("^^^^^^^^^^^^^^^^^^");
-		logConsoleMessage("^^^^^^^^^^^^^^^^^^");
-		logConsoleMessage(DateUtil.getDateTime() + " >>> EXCEPTION OCCURED: " + error);
-		logConsoleMessage("++++++++++++++++++");
-		logConsoleMessage("++++++++++++++++++");
+		GenericUtil.logConsoleBlankMessage();
+		GenericUtil.logConsoleMessage("++++++++++++++++++EXCEPTION OCCURED++++++++++++++++++");
+		GenericUtil.logConsoleMessage("EXCEPTION IS: " + error);
+		GenericUtil.logConsoleMessage("++++++++++++++++++END OF EXCEPTION++++++++++++++++++");
+		GenericUtil.logConsoleBlankMessage();
 	}
 
 	public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Trying to find Element By : " + by.toString());
+		//GenericUtil.logConsoleMessage("Trying to find Element By : " + by.toString());
+		ElementHighlighter.highlightElement(element, driver);
 	}
 
 	public void afterFindBy(By by, WebElement element, WebDriver driver) {
-		
-		ElementHighlighter.highlightElement(driver, element);
-		
-		logConsoleMessage(DateUtil.getDateTime() + " >>> Found Element By : " + by.toString());
-	}
 
+		ElementHighlighter.highlightElement(element, driver);
+	}
 }

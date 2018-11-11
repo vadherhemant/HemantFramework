@@ -22,9 +22,9 @@ public class LoginCRMTest extends LoginCRMPage {
 		LoginCRM();
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
 		softAssert.assertAll();
-	} 
+	}
 
-	@Test(priority = 2, alwaysRun=true, description = "This test will assert login success and logout success using page title verification")
+	@Test(priority = 2, alwaysRun = true, description = "This test will assert login success and logout success using page title verification")
 	public void verifyTitleTest() {
 
 		LogoutCRMPage logoutPage = new LogoutCRMPage();
@@ -37,12 +37,10 @@ public class LoginCRMTest extends LoginCRMPage {
 
 		softAssert.assertAll();
 	}
-	
 
-	@AfterClass
+	@AfterClass(enabled = true)
 	public void tearDown() {
-		driver.quit();
-		driver = null;
+		stopBrowser();
 	}
 
 }

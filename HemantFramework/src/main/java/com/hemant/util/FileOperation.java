@@ -13,7 +13,7 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
-public class FileUtility {
+public class FileOperation {
 
 	public static void copyFile(final File srcPath, final File dstPath) throws IOException {
 

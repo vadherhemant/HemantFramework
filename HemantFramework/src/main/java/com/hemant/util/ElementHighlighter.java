@@ -8,54 +8,39 @@ import com.hemant.base.BasePage;
 
 public class ElementHighlighter {
 
-	static JavascriptExecutor js; 
-	
-	public static void highlightElement(WebDriver driver, WebElement element) {
-		
-		highlightField(driver, element);
-		
-		waitFor(500);
-		
-		unHighlightField(driver, element);
+	public static void highlightElement(WebElement ele, WebDriver drv) {
 
+		highlightField(drv, ele);
+
+		GenericUtil.sleep(2000);
+
+		unHighlightField(drv, ele);
 	}
 
-	private static void unHighlightField(WebDriver driver, WebElement element) {
+	private static void unHighlightField(WebDriver Drv, WebElement Ele) {
+		JavascriptExecutor js;
 
 		try {
-			js.executeScript("arguments[0].setAttribute('style', 'background: border: 2px solid white;');", element);
-			
+			js = (JavascriptExecutor)Drv;
+			js.executeScript("arguments[0].setAttribute('style', 'background: border: 2px solid white;');", Ele);
+
 		} catch (Exception e) {
-			BasePage.logConsoleMessage("Exception occurred while UnHighlighting web element " + element);
+			BasePage.logConsoleMessage("Exception occurred while UnHighlighting web element " + Ele);
 			e.printStackTrace();
 		}
-
-		
 	}
 
-	private static void waitFor(int i) {
-		try {
-			Thread.sleep(500);
-		
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-	}
+	private static void highlightField(WebDriver drV, WebElement elE) {
+		JavascriptExecutor js;
 
-	private static void highlightField(WebDriver driver, WebElement element) {
-		
-		js = (JavascriptExecutor)driver;
-		
 		try {
-			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
-		
+			js = (JavascriptExecutor) drV;
+			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');",
+					elE);
+
 		} catch (Exception e) {
-			BasePage.logConsoleMessage("Exception occurred while Highlighting web element " + element);
+			BasePage.logConsoleMessage("Exception occurred while Highlighting web element " + elE);
 			e.printStackTrace();
 		}
-			
 	}
-	
-	
 }

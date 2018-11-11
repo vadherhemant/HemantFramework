@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.hemant.base.BasePage;
 import com.hemant.base.ElementAction;
-import com.hemant.generic.ProjProperties;
 
 public class LoginCRMPage extends BasePage {
 
@@ -30,9 +29,9 @@ public class LoginCRMPage extends BasePage {
 
 	public void LoginCRM() {
 
-		ElementAction.SendKeys(userName, ProjProperties.getConfigProperty("Username"));
+		ElementAction.SendKeys(userName, getConfigProperty("UserName"));
 
-		ElementAction.SendKeys(passWord, ProjProperties.getConfigProperty("Password"));
+		ElementAction.SendKeys(passWord, getConfigProperty("PassWord"));
 
 		ClickSubmit();
 	}
