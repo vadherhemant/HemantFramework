@@ -1,4 +1,4 @@
-package com.hemant.base;
+package com.hemant.browserfactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import com.hemant.generic.WebEventListener;
+import com.hemant.reporter.WebEventListener;
 import com.hemant.util.GenericUtil;
 
 public class BasePage extends GenericUtil {
@@ -101,7 +101,7 @@ public class BasePage extends GenericUtil {
 		try {
 			logConsoleMessage("Loading the Website...");
 			driver.get(webURL);
-			GenericUtil.sleep(1000);
+			GenericUtil.waitForSeconds(1000);
 
 		} catch (Exception e) {
 			logConsoleMessage("Error occurred while loading the website: " + webURL);

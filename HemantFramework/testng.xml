@@ -3,7 +3,7 @@
 <suite name="Hemant Framework Suite">
 
     <listeners>
-        <listener class-name="com.hemant.listeners.TestListener"/>
+        <listener class-name="com.hemant.testresults.TestListener"/>
     </listeners>
     
     

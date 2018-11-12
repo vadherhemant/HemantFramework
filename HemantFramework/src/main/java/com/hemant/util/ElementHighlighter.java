@@ -4,7 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.hemant.base.BasePage;
+import com.hemant.browserfactory.BasePage;
 
 public class ElementHighlighter {
 
@@ -12,7 +12,7 @@ public class ElementHighlighter {
 
 		highlightField(drv, ele);
 
-		GenericUtil.sleep(2000);
+		GenericUtil.waitForSeconds(500);
 
 		unHighlightField(drv, ele);
 	}

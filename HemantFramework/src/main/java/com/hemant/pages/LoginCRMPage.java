@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import com.hemant.base.BasePage;
-import com.hemant.base.ElementAction;
+import com.hemant.browserfactory.BasePage;
+import com.hemant.webelements.ElementAction;
 
 public class LoginCRMPage extends BasePage {
 

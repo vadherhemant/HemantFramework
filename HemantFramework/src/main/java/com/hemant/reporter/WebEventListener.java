@@ -1,4 +1,4 @@
-package com.hemant.generic;
+package com.hemant.reporter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -75,8 +75,9 @@ public class WebEventListener implements WebDriverEventListener {
 	}
 
 	public void beforeClickOn(WebElement element, WebDriver driver) {
-		GenericUtil.logConsoleMessage("Trying to click on: " + element.toString());
-		//ElementHighlighter.highlightElement(driver, element);
+		GenericUtil.logConsoleMessage("Trying to click on: " + element);
+
+		ElementHighlighter.highlightElement(element, driver);
 	}
 
 	public void afterClickOn(WebElement element, WebDriver driver) {
@@ -108,12 +109,15 @@ public class WebEventListener implements WebDriverEventListener {
 	}
 
 	public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-		//GenericUtil.logConsoleMessage("Trying to find Element By : " + by.toString());
-		ElementHighlighter.highlightElement(element, driver);
+
+/*		GenericUtil.logConsoleMessage("BEFORE FindBy CHECK VALUE OF ELEMENT" + element);
+		GenericUtil.logConsoleMessage("BEFORE FindBy CHECK VALUE OF by is: " + by);
+*/
 	}
 
 	public void afterFindBy(By by, WebElement element, WebDriver driver) {
-
-		ElementHighlighter.highlightElement(element, driver);
+/*		GenericUtil.logConsoleMessage("AFTERFindBy CHECK VALUE OF ELEMENT" + element);
+		GenericUtil.logConsoleMessage("AFTERFindBy CHECK VALUE OF by is: " + by);
+*/		//ElementHighlighter.highlightElement(element, driver);
 	}
 }

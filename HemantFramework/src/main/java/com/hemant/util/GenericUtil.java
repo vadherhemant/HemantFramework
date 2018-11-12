@@ -9,9 +9,9 @@ import java.util.Properties;
 
 public class GenericUtil {
 
-	public static void sleep(int sleepInMS) {
+	public static void waitForSeconds(final int seconds) {
 		try {
-			Thread.sleep(sleepInMS);
+			Thread.sleep(seconds * 1000);
 
 		} catch (InterruptedException e) {
 			logConsoleMessage("Error in sleep method.." + e.getMessage());
