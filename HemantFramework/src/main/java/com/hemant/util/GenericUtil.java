@@ -18,6 +18,16 @@ public class GenericUtil {
 			Thread.currentThread().interrupt();
 		}
 	}
+	
+	public static void waitForMilliSeconds(final int milliSeconds) {
+		try {
+			Thread.sleep(milliSeconds);
+
+		} catch (InterruptedException e) {
+			logConsoleMessage("Error in sleep method.." + e.getMessage());
+			Thread.currentThread().interrupt();
+		}
+	}
 
 	public static String getConfigProperty(String PropertyKey) {
 

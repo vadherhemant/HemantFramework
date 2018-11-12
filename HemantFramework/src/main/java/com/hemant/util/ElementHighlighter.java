@@ -10,7 +10,7 @@ public class ElementHighlighter {
 
 		highlightField(drv, ele);
 
-		GenericUtil.waitForSeconds(500);
+		GenericUtil.waitForMilliSeconds(500);
 
 		unHighlightField(drv, ele);
 	}

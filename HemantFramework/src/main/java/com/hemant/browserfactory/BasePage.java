@@ -95,9 +95,9 @@ public class BasePage extends GenericUtil {
 		String webURL = getConfigProperty("URL");
 
 		try {
-			logConsoleMessage("Loading the Website...");
+			logConsoleMessage("Loading the Website... " + webURL);
 			driver.get(webURL);
-			GenericUtil.waitForSeconds(1000);
+			GenericUtil.waitForSeconds(2);
 
 		} catch (Exception e) {
 			logConsoleMessage("Error occurred while loading the website: " + webURL);
