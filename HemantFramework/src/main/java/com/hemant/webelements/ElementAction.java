@@ -50,11 +50,10 @@ public class ElementAction extends BasePage {
 					}
 				}
 			}
-		} 
-			  finally { 
-				  //logConsoleMessage(getDateTime() + " >>> CLICKED ON LINK:-> " + element); 
-				  }
-			 
+		} finally {
+			// logConsoleMessage(getDateTime() + " >>> CLICKED ON LINK:-> " + element);
+		}
+
 	}
 
 	public static void SendKeys(WebElement element, String textToEnter) {

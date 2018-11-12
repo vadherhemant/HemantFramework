@@ -4,8 +4,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.hemant.browserfactory.BasePage;
-
 public class ElementHighlighter {
 
 	public static void highlightElement(WebElement ele, WebDriver drv) {
@@ -21,11 +19,11 @@ public class ElementHighlighter {
 		JavascriptExecutor js;
 
 		try {
-			js = (JavascriptExecutor)Drv;
+			js = (JavascriptExecutor) Drv;
 			js.executeScript("arguments[0].setAttribute('style', 'background: border: 2px solid white;');", Ele);
 
 		} catch (Exception e) {
-			BasePage.logConsoleMessage("Exception occurred while UnHighlighting web element " + Ele);
+			GenericUtil.logConsoleMessage("Exception occurred while UnHighlighting web element " + Ele);
 			e.printStackTrace();
 		}
 	}
@@ -35,11 +33,10 @@ public class ElementHighlighter {
 
 		try {
 			js = (JavascriptExecutor) drV;
-			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');",
-					elE);
+			js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", elE);
 
 		} catch (Exception e) {
-			BasePage.logConsoleMessage("Exception occurred while Highlighting web element " + elE);
+			GenericUtil.logConsoleMessage("Exception occurred while Highlighting web element " + elE);
 			e.printStackTrace();
 		}
 	}

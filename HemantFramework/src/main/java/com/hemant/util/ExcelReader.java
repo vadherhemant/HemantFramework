@@ -9,8 +9,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.hemant.browserfactory.BasePage;
-
 public class ExcelReader {
 
 	public static void main(String[] args) throws IOException {
@@ -56,11 +54,11 @@ public class ExcelReader {
 
 			for (j = 0; j < row.getLastCellNum(); j++) {
 
-				BasePage.logConsoleMessage(row.getCell(j).getStringCellValue().toString() + "|| ");
+				GenericUtil.logConsoleMessage(row.getCell(j).getStringCellValue().toString() + "|| ");
 
 			}
 
-			BasePage.logConsoleMessage("");
+			GenericUtil.logConsoleMessage("");
 
 		}
 	}

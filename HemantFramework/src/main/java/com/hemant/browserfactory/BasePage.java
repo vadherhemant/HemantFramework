@@ -68,23 +68,19 @@ public class BasePage extends GenericUtil {
 		logConsoleMessage("Starting browser " + browserName + "...");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty(getConfigProperty("ChromeKeyProperty"),
-					getConfigProperty("WinChromeDriverPath"));
+			System.setProperty(getConfigProperty("ChromeKeyProperty"), getConfigProperty("WinChromeDriverPath"));
 			driver = new ChromeDriver();
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
-			System.setProperty(getConfigProperty("FireFoxKeyProperty"),
-					getConfigProperty("WinFireFoxDriverPath"));
+			System.setProperty(getConfigProperty("FireFoxKeyProperty"), getConfigProperty("WinFireFoxDriverPath"));
 			driver = new FirefoxDriver();
 
 		} else if (browserName.equalsIgnoreCase("IE")) {
-			System.setProperty(getConfigProperty("IEDriverKeyProperty"),
-					getConfigProperty("WinIEDriverPath"));
+			System.setProperty(getConfigProperty("IEDriverKeyProperty"), getConfigProperty("WinIEDriverPath"));
 			driver = new InternetExplorerDriver();
 
 		} else if (browserName.equalsIgnoreCase("Edge")) {
-			System.setProperty(getConfigProperty("EdgeKeyProperty"),
-					getConfigProperty("WinEdgeDriverPath"));
+			System.setProperty(getConfigProperty("EdgeKeyProperty"), getConfigProperty("WinEdgeDriverPath"));
 			driver = new EdgeDriver();
 
 		} else if (browserName.equalsIgnoreCase(null)) {

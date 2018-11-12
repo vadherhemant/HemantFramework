@@ -18,21 +18,21 @@ public class GenericUtil {
 			Thread.currentThread().interrupt();
 		}
 	}
-	
+
 	public static String getConfigProperty(String PropertyKey) {
-		
+
 		Properties prop = new Properties();
-		
+
 		try {
 			FileInputStream configFile = new FileInputStream("resources/config/config.properties");
 			prop.load(configFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return prop.getProperty(PropertyKey);
 	}
-	
+
 	public static void logConsoleBlankMessage() {
 		System.out.println("");
 	}
@@ -42,10 +42,10 @@ public class GenericUtil {
 	}
 
 	public static String getDateTime() {
-		
+
 		DateFormat dateFormat;
 		Date date;
-		
+
 		dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSS");
 
 		date = new Date();
