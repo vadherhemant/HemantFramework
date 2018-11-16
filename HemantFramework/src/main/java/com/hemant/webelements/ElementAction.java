@@ -15,32 +15,47 @@ public class ElementAction extends BasePage {
 	static JavascriptExecutor js = (JavascriptExecutor) driver;
 	static Actions actions = new Actions(driver);
 
-	public static void Click(WebElement element) {
+	public static final void Click(WebElement element) {
 
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
 			element.click();
+
 		} catch (Exception e0) {
 			try {
+				logConsoleMessage("Failed to perform element.click.  Trying to click using Keys.RETURN.");
 				element.sendKeys(Keys.RETURN);
+
 			} catch (Exception e1) {
 				try {
+					logConsoleMessage("Failed to perform Keys.RETURN.  Trying to click using js.executeScript(arguments[0].click(), element");
 					js.executeScript("arguments[0].click();", element);
+
 				} catch (Exception e2) {
 					try {
+						logConsoleMessage("Failed to perform click using js.executeScript(arguments[0].click(), element).  Trying to click using js.executeScript(document.getElementsByName(element.getTagName())[0].click()");
 						js.executeScript("document.getElementsByName('" + element.getTagName() + "')[0].click()");
+
 					} catch (Exception e3) {
 						try {
+							logConsoleMessage("Failed to perform click using js.executeScript(document.getElementsByName(element.getTagName())[0].click().  Trying to click using actions.click(element).perform()");
 							actions.click(element).perform();
+
 						} catch (Exception e4) {
 							try {
+								logConsoleMessage("Failed to perform click using actions.click(element).perform().  Trying to click using actions.moveToElement(element).click().perform()");
 								actions.moveToElement(element).click().perform();
+
 							} catch (Exception e5) {
 								try {
+									logConsoleMessage("Failed to perform click using actions.moveToElement(element).click().perform().  Trying to click using actions.sendKeys(element, Keys.RETURN).perform()");
 									actions.sendKeys(element, Keys.RETURN).perform();
+
 								} catch (Exception e6) {
 									try {
+										logConsoleMessage("Failed to perform click using actions.sendKeys(element, Keys.RETURN).perform().  Trying to click using actions.clickAndHold(element).release().perform()");
 										actions.clickAndHold(element).release().perform();
+
 									} catch (Exception e7) {
 										logConsoleMessage("UNABLE TO PERFORM CLICK ON ELEMENT:-> " + element);
 									}
@@ -53,10 +68,9 @@ public class ElementAction extends BasePage {
 		} finally {
 			// logConsoleMessage(getDateTime() + " >>> CLICKED ON LINK:-> " + element);
 		}
-
 	}
 
-	public static void SendKeys(WebElement element, String textToEnter) {
+	public static final void SendKeys(WebElement element, String textToEnter) {
 
 		int i;
 		char c;

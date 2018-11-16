@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.hemant.reporter.WebEventListener;
@@ -36,7 +37,7 @@ public class BasePage extends GenericUtil {
 		}
 	}
 
-	public void stopBrowser() {
+	public final void stopBrowser() {
 
 		try {
 			if (driver != null) {
@@ -50,7 +51,7 @@ public class BasePage extends GenericUtil {
 		}
 	}
 
-	private void startBrowser() {
+	private final void startBrowser() {
 
 		setDriverToBrowser();
 
@@ -76,6 +77,12 @@ public class BasePage extends GenericUtil {
 			driver = new FirefoxDriver();
 
 		} else if (browserName.equalsIgnoreCase("IE")) {
+			
+			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+
+			capabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+			
+			
 			System.setProperty(getConfigProperty("IEDriverKeyProperty"), getConfigProperty("WinIEDriverPath"));
 			driver = new InternetExplorerDriver();
 
@@ -90,7 +97,7 @@ public class BasePage extends GenericUtil {
 		}
 	}
 
-	private void loadWebsite() {
+	private final void loadWebsite() {
 
 		String webURL = getConfigProperty("URL");
 
@@ -105,7 +112,7 @@ public class BasePage extends GenericUtil {
 		}
 	}
 
-	private void setBrowserZoom(int zoom) {
+	private final void setBrowserZoom(int zoom) {
 		((JavascriptExecutor) driver).executeScript("document.body.style.zoom='" + zoom + "%';");
 	}
 

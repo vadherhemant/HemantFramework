@@ -36,12 +36,6 @@ public class LoginCRMPage extends BasePage {
 		ClickSubmit();
 	}
 
-	public void LoginCRM(String username, String password) {
-		ElementAction.SendKeys(userName, username);
-		ElementAction.SendKeys(passWord, password);
-		ClickSubmit();
-	}
-
 	private void ClickSubmit() {
 		ElementAction.Click(submitButton);
 	}

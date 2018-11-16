@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class GenericUtil {
 
-	public static void waitForSeconds(final int seconds) {
+	public static final void waitForSeconds(final int seconds) {
 		try {
 			Thread.sleep(seconds * 1000);
 
@@ -19,7 +19,7 @@ public class GenericUtil {
 		}
 	}
 	
-	public static void waitForMilliSeconds(final int milliSeconds) {
+	public static final void waitForMilliSeconds(final int milliSeconds) {
 		try {
 			Thread.sleep(milliSeconds);
 
@@ -29,7 +29,7 @@ public class GenericUtil {
 		}
 	}
 
-	public static String getConfigProperty(String PropertyKey) {
+	public static final String getConfigProperty(String PropertyKey) {
 
 		Properties prop = new Properties();
 
@@ -43,15 +43,15 @@ public class GenericUtil {
 		return prop.getProperty(PropertyKey);
 	}
 
-	public static void logConsoleBlankMessage() {
+	public static final void logConsoleBlankMessage() {
 		System.out.println("");
 	}
 
-	public static void logConsoleMessage(String message) {
+	public static final void logConsoleMessage(String message) {
 		System.out.println(getDateTime() + " >>> " + message);
 	}
 
-	public static String getDateTime() {
+	public static final String getDateTime() {
 
 		DateFormat dateFormat;
 		Date date;
