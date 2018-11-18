@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class ElementHighlighter {
 
-	public static void highlightElement(WebElement ele, WebDriver drv) {
+	public final static void highlightElement(WebElement ele, WebDriver drv) {
 
 		highlightField(drv, ele);
 

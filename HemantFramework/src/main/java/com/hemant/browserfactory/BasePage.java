@@ -132,7 +132,7 @@ public class BasePage extends GenericUtil {
 		driver.manage().timeouts().setScriptTimeout(scriptWait, TimeUnit.SECONDS);
 	}
 
-	private void setEventListener() {
+	private final void setEventListener() {
 
 		EventFiringWebDriver e_driver = new EventFiringWebDriver(driver);
 
@@ -141,5 +141,13 @@ public class BasePage extends GenericUtil {
 		e_driver.register(eventListener);
 
 		driver = e_driver;
+	}
+	
+	public final void switchToFrameMainPanel() {
+		driver.switchTo().frame("mainpanel");
+	}
+	
+	public final void switchToFrameDefault() {
+		driver.switchTo().defaultContent();
 	}
 }

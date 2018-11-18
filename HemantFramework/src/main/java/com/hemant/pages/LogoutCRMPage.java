@@ -22,7 +22,7 @@ public class LogoutCRMPage extends BasePage {
 	public void LogoutCRM() {
 
 		try {
-			driver.switchTo().frame("mainpanel");
+			switchToFrameMainPanel();
 
 			ElementAction.Click(logoutLink);
 
