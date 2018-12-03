@@ -9,6 +9,7 @@ import java.util.Properties;
 
 public class GenericUtil {
 
+
 	public static final void waitForSeconds(final int seconds) {
 		try {
 			Thread.sleep(seconds * 1000);
@@ -48,7 +49,10 @@ public class GenericUtil {
 	}
 
 	public static final void logConsoleMessage(String message) {
-		System.out.println(getDateTime() + " >>> " + message);
+		System.out.println(getDateTime() + " >>> " + message + " >>> " + Thread.currentThread().getName()); 
+		System.out.println("Thread.getAllStackTraces().getClass()  +++  " + Thread.getAllStackTraces().getClass());
+		//System.out.println(Java.lang.Class.getSuperclass());
+		
 	}
 
 	public static final String getDateTime() {

@@ -19,8 +19,11 @@ public class LoginCRMTest extends LoginCRMPage {
 
 	@Test(priority = 1, description = "This test will assert page title after logging into site")
 	public void LoginTest() {
+
 		LoginCRM();
+		waitForSeconds(2);
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
+		
 		softAssert.assertAll();
 	}
 
@@ -28,11 +31,12 @@ public class LoginCRMTest extends LoginCRMPage {
 	public void verifyTitleTest() {
 
 		LogoutCRMPage logoutPage = new LogoutCRMPage();
-
+		
 		softAssert.assertEquals(driver.getTitle(), "CRMPRO");
 
 		logoutPage.LogoutCRM();
-
+		waitForSeconds(2);
+		
 		softAssert.assertEquals(driver.getTitle(), "#1 Free CRM software in the cloud for sales and service");
 
 		softAssert.assertAll();

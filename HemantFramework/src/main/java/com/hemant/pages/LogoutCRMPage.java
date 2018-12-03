@@ -13,7 +13,7 @@ public class LogoutCRMPage extends BasePage {
 
 	@CacheLookup
 	@FindBy(how = How.XPATH, using = "//a[contains(@href,'logout')]")
-	WebElement logoutLink;
+	private WebElement LogoutLinkLocator;
 
 	public LogoutCRMPage() {
 		PageFactory.initElements(driver, this);
@@ -24,7 +24,7 @@ public class LogoutCRMPage extends BasePage {
 		try {
 			switchToFrameMainPanel();
 
-			ElementAction.Click(logoutLink);
+			ElementAction.Click(LogoutLinkLocator);
 
 		} finally {
 			driver.switchTo().parentFrame();

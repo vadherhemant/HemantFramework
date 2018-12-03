@@ -143,11 +143,11 @@ public class BasePage extends GenericUtil {
 		driver = e_driver;
 	}
 	
-	public final void switchToFrameMainPanel() {
+	public static final void switchToFrameMainPanel() {
 		driver.switchTo().frame("mainpanel");
 	}
 	
-	public final void switchToFrameDefault() {
+	public static final void switchToFrameDefault() {
 		driver.switchTo().defaultContent();
 	}
 }

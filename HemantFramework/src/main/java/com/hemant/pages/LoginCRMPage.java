@@ -17,15 +17,15 @@ public class LoginCRMPage extends BasePage {
 
 	
 	@FindBy(how = How.NAME, using = "username")
-	WebElement userName;
+	private WebElement UsernameLocator;
 
 	@CacheLookup
 	@FindBy(how = How.NAME, using = "password")
-	WebElement passWord;
+	private WebElement PasswordLocator;
 
 	@CacheLookup
 	@FindBy(how = How.XPATH, using = "//input[@type='submit']")
-	WebElement submitButton;
+	private WebElement SubmitButtonLocator;
 
 	public LoginCRMPage() {
 		PageFactory.initElements(driver, this);
@@ -33,15 +33,15 @@ public class LoginCRMPage extends BasePage {
 
 	public void LoginCRM() {
 
-		ElementAction.SendKeys(userName, getConfigProperty("UserName"));
+		ElementAction.SendKeys(UsernameLocator, getConfigProperty("UserName"));
 
-		ElementAction.SendKeys(passWord, getConfigProperty("PassWord"));
+		ElementAction.SendKeys(PasswordLocator, getConfigProperty("PassWord"));
 
 		ClickSubmit();
 	}
 
 	private void ClickSubmit() {
-		ElementAction.Click(submitButton);
+		ElementAction.Click(SubmitButtonLocator);
 	}
 
 }
